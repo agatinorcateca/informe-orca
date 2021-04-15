@@ -137,7 +137,7 @@ class AquaController extends Controller
 			$validar = \Validator::make($datos,[
 
     			"titulo"=> "required|regex:/^[0-9a-zA-ZñÑáéíóúÁÉÍÓÚ ]+$/i",
-    			"observacion"=> "required|regex:/^[0-9a-zA-ZñÑáéíóúÁÉÍÓÚ ]+$/i",
+    		//	"observacion"=> "required|regex:/^[0-9a-zA-ZñÑáéíóúÁÉÍÓÚ ]+$/i",
     		//	"estado"=> "required|regex:/^[a-z0-9-]+$/i",
     			"imagen_temporal"=> "required|image|mimes:jpg,jpeg,png|max:2000000"
 
@@ -211,6 +211,98 @@ class AquaController extends Controller
 		               "observacion"=>$request->input("observacion"),
 					   "estado"=>$request->input("estado"),
 					   "grabacion"=>$request->input("grabacion"),
+		            //   "imagen_actual"=>$request->input("imagen_actual"));
+                       "imagen_temporal"=>$request->file("lugar"));
+
+        // Recoger Imagen
+
+      //  $imagen = array("imagen_temporal"=>$request->file("lugar"));
+
+        // Validar los datos
+
+        if(!empty($datos)){
+
+            $validar = \Validator::make($datos,[
+
+               "titulo" => "required|regex:/^[0-9a-zA-ZñÑáéíóúÁÉÍÓÚ ]+$/i",
+               "observacion" => "required|regex:/^[0-9a-zA-ZñÑáéíóúÁÉÍÓÚ ]+$/i",
+            //  "estado" => 'required|regex:/^[,\\0-9a-zA-ZñÑáéíóúÁÉÍÓÚ ]+$/i',
+            //  "grabacion" => "required|regex:/^[a-z0-9-]+$/i",
+			//	"imagen_actual"=> "required"
+            "imagen_temporal"=> "required|image|mimes:jpg,jpeg,png|max:2000000"
+				
+
+            ]);
+			//guardar registro aqua
+			if(!$datos["imagen_temporal"] || $validar->fails()){
+
+				return redirect("/aqua")->with("no-validacion", "");
+
+			}else{
+
+				$aleatorio = mt_rand(100,999);
+
+				$ruta = "img/centrosaqua/".$aleatorio.".".$datos["imagen_temporal"]->guessExtension();
+
+				//Redimensionar imagen
+
+				list($ancho, $alto) = getimagesize($datos["imagen_temporal"]);
+
+				$nuevoAncho = 1024;
+				$nuevoAlto = 576;
+
+				if($datos["imagen_temporal"]->guessExtension() == "jpeg"){
+
+					$origen = imagecreatefromjpeg($datos["imagen_temporal"]);
+					$destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
+					imagecopyresized($destino, $origen, 0, 0, 0, 0, $nuevoAncho, $nuevoAlto, $ancho, $alto);
+					imagejpeg($destino, $ruta);
+				}
+
+				if($datos["imagen_temporal"]->guessExtension() == "png"){
+
+                    $origen = imagecreatefrompng($datos["imagen_temporal"]);
+					$destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
+					imagealphablending($destino, FALSE);
+					imagesavealpha($destino, TRUE);
+					imagecopyresized($destino, $origen, 0, 0, 0, 0, $nuevoAncho, $nuevoAlto, $ancho, $alto);
+					imagepng($destino, $ruta);
+
+				}
+
+                $datos = array("titulo" => $datos["titulo"],
+                                "observacion" => $datos["observacion"],
+								"estado" => $datos["estado"],
+								"grabacion" => $datos["grabacion"],
+                                "lugar" => $ruta);
+
+                $aqua = Aqua::where('id', $id)->update($datos); 
+
+                return redirect("/aqua")->with("ok-editar", "");
+
+            }
+
+        }else{
+
+           return redirect("/aqua")->with("error", ""); 
+
+        }
+
+
+    }
+
+	/*=============================================
+	editar un registro cuando este ya se encuentra en la base de datos ejemplo cuando se agrega manual un centro,
+    este toma la imagen anterior y la cambia. este codigo se tomara cuando automaticamente la imagen llegue a la base de datos. 
+	=============================================*/
+    /*
+    public function update($id, Request $request){
+
+        // Recoger los datos
+		$datos = array("titulo"=>$request->input("titulo"),
+		               "observacion"=>$request->input("observacion"),
+					   "estado"=>$request->input("estado"),
+					   "grabacion"=>$request->input("grabacion"),
 		               "imagen_actual"=>$request->input("imagen_actual"));
 
         // Recoger Imagen
@@ -223,10 +315,10 @@ class AquaController extends Controller
 
             $validar = \Validator::make($datos,[
 
-                "titulo" => "required|regex:/^[0-9a-zA-ZñÑáéíóúÁÉÍÓÚ ]+$/i",
-                "observacion" => "required|regex:/^[0-9a-zA-ZñÑáéíóúÁÉÍÓÚ ]+$/i",
-                "estado" => 'required|regex:/^[,\\0-9a-zA-ZñÑáéíóúÁÉÍÓÚ ]+$/i',
-                "grabacion" => "required|regex:/^[a-z0-9-]+$/i",
+               "titulo" => "required|regex:/^[0-9a-zA-ZñÑáéíóúÁÉÍÓÚ ]+$/i",
+            //  "observacion" => "required|regex:/^[0-9a-zA-ZñÑáéíóúÁÉÍÓÚ ]+$/i",
+            //  "estado" => 'required|regex:/^[,\\0-9a-zA-ZñÑáéíóúÁÉÍÓÚ ]+$/i',
+            //  "grabacion" => "required|regex:/^[a-z0-9-]+$/i",
 				"imagen_actual"=> "required"
 				
 
@@ -315,7 +407,7 @@ class AquaController extends Controller
 
 
     }
-	
+    Fin del editar*/
 
 }
 

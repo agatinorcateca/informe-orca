@@ -127,7 +127,7 @@ class ClientetresController extends Controller
     public function store(Request $request){
 
 		//recoger datos
-		$datos = array("titulo"=>$request->input("titulo"),
+		$datos = array("centro"=>$request->input("centro"),
 					   "observacion"=>$request->input("observacion"),
 				//	   "estado"=>$request->input("estado"),
 					   "imagen_temporal"=>$request->file("lugar"));
@@ -137,8 +137,8 @@ class ClientetresController extends Controller
 
 			$validar = \Validator::make($datos,[
 
-    			"titulo"=> "required|regex:/^[0-9a-zA-ZñÑáéíóúÁÉÍÓÚ ]+$/i",
-    			"observacion"=> "required|regex:/^[0-9a-zA-ZñÑáéíóúÁÉÍÓÚ ]+$/i",
+    			"centro"=> "required|regex:/^[0-9a-zA-ZñÑáéíóúÁÉÍÓÚ ]+$/i",
+    		//	"observacion"=> "required|regex:/^[0-9a-zA-ZñÑáéíóúÁÉÍÓÚ ]+$/i",
     		//	"estado"=> "required|regex:/^[a-z0-9-]+$/i",
     			"imagen_temporal"=> "required|image|mimes:jpg,jpeg,png|max:2000000"
 
@@ -182,7 +182,7 @@ class ClientetresController extends Controller
 				}
 
 				$aysen = new Aysen();
-                $aysen->titulo = $datos["titulo"];
+                $aysen->centro = $datos["centro"];
                 $aysen->observacion = $datos["observacion"];
             //    $aysen->estado = $datos["estado"];                
                 $aysen->lugar = $ruta;
@@ -208,7 +208,7 @@ class ClientetresController extends Controller
 	public function update($id, Request $request){
 
         // Recoger los datos
-		$datos = array("titulo"=>$request->input("titulo"),
+		$datos = array("centro"=>$request->input("centro"),
 		               "observacion"=>$request->input("observacion"),
 					   "estado"=>$request->input("estado"),
 					   "grabacion"=>$request->input("grabacion"),
@@ -224,10 +224,10 @@ class ClientetresController extends Controller
 
             $validar = \Validator::make($datos,[
 
-                "titulo" => "required|regex:/^[0-9a-zA-ZñÑáéíóúÁÉÍÓÚ ]+$/i",
-                "observacion" => "required|regex:/^[0-9a-zA-ZñÑáéíóúÁÉÍÓÚ ]+$/i",
-                "estado" => 'required|regex:/^[,\\0-9a-zA-ZñÑáéíóúÁÉÍÓÚ ]+$/i',
-                "grabacion" => "required|regex:/^[a-z0-9-]+$/i",
+                "centro" => "required|regex:/^[0-9a-zA-ZñÑáéíóúÁÉÍÓÚ ]+$/i",
+           //   "observacion" => "required|regex:/^[0-9a-zA-ZñÑáéíóúÁÉÍÓÚ ]+$/i",
+           //     "estado" => 'required|regex:/^[,\\0-9a-zA-ZñÑáéíóúÁÉÍÓÚ ]+$/i',
+           //     "grabacion" => "required|regex:/^[a-z0-9-]+$/i",
 				"imagen_actual"=> "required"
 				
 
@@ -296,7 +296,7 @@ class ClientetresController extends Controller
 
                 }
 
-                $datos = array("titulo" => $datos["titulo"],
+                $datos = array("centro" => $datos["centro"],
                                 "observacion" => $datos["observacion"],
 								"estado" => $datos["estado"],
 								"grabacion" => $datos["grabacion"],

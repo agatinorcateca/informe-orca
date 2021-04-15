@@ -31,7 +31,8 @@ class PruebasExport implements FromCollection, WithHeadings, ShouldAutoSize, Wit
     {
        // return Prueba::all();
          
-        $pruebas = DB::table('tdprueba')->select('id','titulo','observacion','estado','grabacion','created_at','updated_at')->where('created_at','>=',$this->from)->where('created_at','<=', $this->to)->get();
+        $pruebas = DB::table('tdprueba')->select('id','titulo','observacion','estado','grabacion','created_at','updated_at')
+        ->where('created_at','>=',$this->from)->where('created_at','<=', $this->to)->get();
         return $pruebas;
     }
 

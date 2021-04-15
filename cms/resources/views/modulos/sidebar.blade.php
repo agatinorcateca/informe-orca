@@ -186,13 +186,16 @@
               
               <li class="nav-item">
               <a href="{{ url("/empresas") }}" class="nav-link active">
-                  <i class="far fa-circle nav-icon"></i>
+                  
+                  <i class="fas fa-industry nav-icon"></i>
                   <p>Empresas</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="{{ url("/reportes") }}" class="nav-link active">
-                  <i class="far fa-circle nav-icon"></i>
+                  
+                  <i class="fas fa-clipboard-list nav-icon"></i>
+                
                   <p>Reportes</p>
                 </a>
               </li>

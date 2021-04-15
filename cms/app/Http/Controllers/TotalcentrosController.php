@@ -195,7 +195,7 @@ class TotalcentrosController extends Controller
            $validar = \Validator::make($datos,[
 
                 "titulo_centro" => "required|regex:/^[0-9a-zA-ZñÑáéíóúÁÉÍÓÚ ]+$/i",
-                "observacion_centro" => 'required|regex:/^[(\\)\\=\\&\\$\\;\\-\\_\\*\\"\\<\\>\\?\\¿\\!\\¡\\:\\,\\.\\0-9a-zA-ZñÑáéíóúÁÉÍÓÚ ]+$/i',
+           //     "observacion_centro" => 'required|regex:/^[(\\)\\=\\&\\$\\;\\-\\_\\*\\"\\<\\>\\?\\¿\\!\\¡\\:\\,\\.\\0-9a-zA-ZñÑáéíóúÁÉÍÓÚ ]+$/i',
                 "ubicacion" => 'required|regex:/^[,\\"\\[\\]\\0-9a-zA-ZñÑáéíóúÁÉÍÓÚ ]+$/i',
                 "estado" => 'required|regex:/^[0-9a-zA-ZñÑáéíóúÁÉÍÓÚ ]+$/i'
                 //"created_at" => "required|regex:/^[a-z0-9-]+$/i"

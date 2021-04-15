@@ -8,7 +8,8 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>.:::Registros Orca Tecnologia Spa:::.</h1>
+            <h1>.::: <i class="fas fa-clipboard-list">    Registros Orca Tecnologia Spa</i> :::.</h1>
+            
           </div>
           
         </div>
@@ -385,7 +386,7 @@
                 "Julio","agosto","septiembre","octubre",
                 "noviembre","diciembre"],
         datasets: [{
-            label: '# Centros',
+            label: ["aqua","multi","aysen"],
             data: [4, 10, 20, 1,6,40,50,52,41,53,52,54],
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',

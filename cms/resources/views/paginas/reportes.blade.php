@@ -11,9 +11,10 @@
       <div class="row mb-2">
 
         <div class="col-sm-6">
-
-          <h1>reportes</h1>
-
+         <h1>
+          <i class="fas fa-clipboard-list">  Reportes</i>
+          
+          </h1>
         </div>
 
         <div class="col-sm-6">
@@ -22,7 +23,7 @@
 
             <li class="breadcrumb-item"><a href="{{url('/')}}">Inicio</a></li>
 
-            <li class="breadcrumb-item active"><a href="{{url('/reportes')}}">Reportes</a></li>
+            <li class="breadcrumb-item active">Reportes</li>
 
           </ol>
 
@@ -43,84 +44,144 @@
           <!-- Default box -->
           <div class="card">
             <div class="card-header">
+               <h4>Registro de Datos por Cliente.</h4>
               
-              <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#crearCentro">Crear nuevo centro</button>
-
-             
             </div>
 
             <div class="card-body">
-          {{--date rango fecha--}}
-              <div class="row input-daterange">
-                <div class="col-md-4">
-                  <input type="text" name="from_date" id="from_date" class="form-control" placeholder="Desde"
-                   readonly />
+              {{--
+              <div class="info-box">
+              {{--date rango fecha
+                  <br>
+                      <form action="ViewPages" method="POST" enctype="multipart/form-data">
+                          @csrf
+                          <div class="container">
+                              <div class="row">
+                                <label for="from" class="col-form-label">Filtrar Fecha desde</label>
+                                    <div class="col-md-2">
+                                    <input type="date" class="form-control input-sm" id="from" name="from">
+                                    </div>
+                                  <label for="from" class="col-form-label">a</label>
+                                    <div class="col-md-2">
+                                        <input type="date" class="form-control input-sm" id="to" name="to">
+                                    </div>
+                                  
+                                      <div class="col-md-4">
+                                                                                   
+                                          <button type="submit" class="btn btn-success btn-sm" name="exportExcel" >Exportar Reporte Prueba
+                                            <i class="fas fa-file-excel"></i>
+                                          </button>
 
-                </div>
-
-                <div class="col-md-4">
-                  <input type="text" name="to_date" id="to_date" class="form-control" placeholder="Hasta"
-                   readonly />
-
-                </div>
-                <div class="col-md-4">
-                  <button type="button" name="filter" id="filter" class="btn btn-primary">Buscar</button>
-                  <button type="button" name="refresh" id="refresh" class="btn btn-default">Refrescar</button>
-                </div>
+                                          
+                                      </div>
+                              </div>
+                          </div>
+                      </form>
+                  <br>
 
               </div>
-              <br>
+               --}}
 
-              <table class="table table-bordered table-striped dt-responsive" with="100%" id="tablaReportes">
-
-                <thead>
-                  <tr>
-                    <th>#</th>
-                    <th>Nombre</th>
-                    <th>Observacion</th>
-                    <th>Estado</th>
-                    <th>Grabacion</th>
-                   <th width="150px">Imagen</th>
-                    <th>fecha</th>
-                    
-                    
-                  </tr>
-                </thead>
-
-              </table>
-              <!-- chars(grafico) -->
-              
-              <br>
-              <div class="card col-12">
-                <div class="card-header">
-                  <h3 class="card-title">
-                    <i class="far fa-chart-bar"></i>
-                     Prueba base datos pyton
-                  </h3>
+              {{--Busqueda Aqua--}}
+              <div class="info-box bg-info">
+                {{--date rango fecha--}}
+                    <br>
+                        <form action="excelAqua" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            <div class="container">
+                                <div class="row">
+                                  <label for="from" class="col-form-label">Filtrar Fecha desde</label>
+                                      <div class="col-md-2">
+                                      <input type="date" class="form-control input-sm" id="from" name="from">
+                                      </div>
+                                    <label for="from" class="col-form-label">a</label>
+                                      <div class="col-md-2">
+                                          <input type="date" class="form-control input-sm" id="to" name="to">
+                                      </div>
+                                    
+                                        <div class="col-md-4">
+                                                                                     
+                                            <button type="submit" class="btn btn-success btn-sm" name="exportExcel" >Exportar Reporte Aqua
+                                              <i class="fas fa-file-excel"></i>
+                                            </button>
   
-                    <div class="card-tools">
-                      <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
-                      </button>
-                      <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i>
-                      </button>
-                    </div>
+                                            
+                                        </div>
+                                </div>
+                            </div>                            
+                        </form>
+                        <img src="vistas/img/aqua.png" class="img-thumbnail" alt="aquachile" width="150px">                         
+                    <br>  
                 </div>
+              {{--fin busqueda aqua--}}
 
-                <div class="card-body">
-                  <canvas id="myLine" width="487" height="230"></canvas>
+              {{--Busqueda multi--}}
+              <div class="info-box bg-info">
+                {{--date rango fecha--}}
+                    <br>
+                        <form action="excelMulti" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            <div class="container">
+                                <div class="row">
+                                  <label for="from" class="col-form-label">Filtrar Fecha desde</label>
+                                      <div class="col-md-2">
+                                      <input type="date" class="form-control input-sm" id="from" name="from">
+                                      </div>
+                                    <label for="from" class="col-form-label">a</label>
+                                      <div class="col-md-2">
+                                          <input type="date" class="form-control input-sm" id="to" name="to">
+                                      </div>
+                                    
+                                        <div class="col-md-4">
+                                                                                     
+                                            <button type="submit" class="btn btn-success btn-sm" name="exportExcel" >Exportar Reporte Multi
+                                              <i class="fas fa-file-excel"></i>
+                                      
+                                            </button>
+  
+                                            
+                                        </div>
+                                </div>
+                            </div>                            
+                        </form>
+                        <img src="vistas/img/multie.png" class="img-thumbnail" alt="aquachile" width="150px" height="200px">                         
+                    <br>  
                 </div>
-                
-              </div>  
-              <br>
-                           
+              {{--fin busqueda multi--}}
 
-            
-                <!-- fin chars(grafico) -->
-
-                <!--grafica prueba-->
-              
-                <!-- fin grafico-->
-              
+              {{--Busqueda aysen--}}
+              <div class="info-box bg-info">
+                {{--date rango fecha--}}
+                    <br>
+                        <form action="excelAysen" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            <div class="container">
+                                <div class="row">
+                                  <label for="from" class="col-form-label">Filtrar Fecha desde</label>
+                                      <div class="col-md-2">
+                                      <input type="date" class="form-control input-sm" id="from" name="from">
+                                      </div>
+                                    <label for="from" class="col-form-label">a</label>
+                                      <div class="col-md-2">
+                                          <input type="date" class="form-control input-sm" id="to" name="to">
+                                      </div>
+                                    
+                                        <div class="col-md-4">
+                                                                                     
+                                            <button type="submit" class="btn btn-success btn-sm" name="exportExcel" >Exportar Reporte Aysen
+                                              <i class="fas fa-file-excel"></i>
+                                            </button>
+  
+                                            
+                                        </div>
+                                </div>
+                            </div>                            
+                        </form>
+                        <img src="vistas/img/aysenn.jpg" class="img-thumbnail" alt="aquachile" width="150px">                         
+                    <br>  
+                </div>
+              {{--fin busqueda aysen--}}
+                     
             </div>
             <!-- /.card-body -->
           
@@ -131,101 +192,5 @@
     </div>
   </section>
 </div>
-
-
-
-  <script>
-    
-    $(document).ready(function () {
-      load_data();
-
-      //inicio calendario
-      $('.input-daterange').datepicker({
-        todayBtn:'linked',
-        format:'yyyy-mm-dd',
-        autoclose:true
-    });
-    
-      
-    $('#filter').click(function(){
-        var from_date = $('#from_date').val();
-        var to_date = $('#to_date').val();
-          if(from_date != '' &&  to_date != '')
-          {
-          $('#tablaReportes').DataTable().destroy();
-          load_data(from_date, to_date);
-          } else {
-              alert('Both Date is required');
-          }
-    });
-    
-    $('#refresh').click(function(){
-        $('#from_date').val('');
-        $('#to_date').val('');
-        $('#tablaReportes').DataTable().destroy();
-        load_data();
-    });
-
-    //Load datatable
-    
-    function load_data(from_date = '', to_date = ''){   
-        $("#tablaReportes").DataTable({
-          processing: true,
-          serverSide: true,
-          ajax : {
-            url: "{{ route('reportes.index')}}",
-            type: 'GET',
-            data:{from_date:from_date, to_date:to_date}
-          },
-          columns: [
-            {
-              data:'id',name:'id'
-            },
-            {
-              data:'titulo',name:'titulo'
-            },
-            {
-              data:'observacion',name:'observacion'
-            },
-            {
-              data:'estado',name:'estado'
-            },
-            {
-              data:'grabacion',name:'grabacion'
-            },
-            {
-              data:'lugar',name:'lugar',
-              render: function(data, type, full, meta){
-
-              if(data == null){
-
-                return '<img src="'+ruta+'/img/administradores/admin.png">'
-
-              }else{
-
-                return '<img src="'+ruta+'/'+data+'" class="img-responsive" width="150">'
-              }
-            },
-            orderable: false 
-          },   
-
-            {
-              data:'created_at',name:'created_at'
-            },
-
-          ],
-          order: [[0,'asc']]
-        });
-      }
-
-    });
-  </script>
-
-     
-   
-        
-        
-   
-
 
 @endsection

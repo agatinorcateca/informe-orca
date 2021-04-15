@@ -50,7 +50,17 @@ Route::get('/pdfmulti', 'PDFController@PDFmulti')->name('descargarPDFmulti');
 Route::get('/pdfaysen', 'PDFController@PDFaysen')->name('descargarPDFaysen');
 Route::get('/pdfaustral', 'PDFController@PDFaustral')->name('descargarPDFaustral');
 Route::get('/inicio', 'HighchartController@highchart')->name('inicio');
+//envio correo
+Route::get('/correo', 'PDFController@CorreoAqua')->name('enviarPDFaqua');
+Route::get('/correo/aysen', 'PDFController@CorreoAysen')->name('enviarPDFaysen');
+Route::get('/correo/multi', 'PDFController@CorreoMulti')->name('enviarPDFmulti');
+Route::get('/correo/austral', 'PDFController@CorreoAustral')->name('enviarPDFaustral');
 
+//Prueba conexion excel
 
-
+//Route::post('/ViewPages', 'ReportesController@exportprueba');
+// no es necesario debido que el enlace se descarga automaticamente por el metodo Route::get('/excelPrueba', 'ReportesController@exportprueba')->name('descargarexcelprueba');
+Route::post('/excelAqua', 'ReportesController@exportaqua');
+Route::post('/excelMulti', 'ReportesController@exportmulti');
+Route::post('/excelAysen', 'ReportesController@exportaysen');
 

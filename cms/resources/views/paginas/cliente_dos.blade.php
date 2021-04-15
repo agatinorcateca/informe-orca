@@ -12,7 +12,7 @@
 
         <div class="col-sm-6">
 
-          <h1>.::Multiexportfoods::.</h1>
+          <h1>.::<i class="fas fa-clipboard-list">   Multiexportfoods::.</i></h1>
 
            <!--barra totales, operativos y cese-->
 
@@ -76,10 +76,20 @@
           <div class="card">
             <div class="card-header">
               
-              <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#crearCentro">Crear nuevo centro</button>
+              <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#crearCentro">
+                <i class="fas fa-plus-circle"></i>    Crear nuevo centro</button>
 
                 <a href="{{ route('descargarPDFmulti')}}" target="blank">
-                  <button class="btn btn-danger btn-sm">Informe PDF</button>
+                  <button class="btn btn-danger btn-sm">Informe PDF
+                    <i class="fas fa-file-pdf"></i>
+                  </button>
+                </a>
+
+                <a href="{{ route('enviarPDFmulti')}}" target="blank">
+                  <button class="btn btn-warning btn-sm">
+                     <i class="fas fa-mail-bulk"></i>
+                  </button>
+                  
                 </a>
               
             </div>
@@ -99,8 +109,12 @@
 
                 </div>
                 <div class="col-md-4">
-                  <button type="button" name="filter" id="filter" class="btn btn-primary">Buscar</button>
-                  <button type="button" name="refresh" id="refresh" class="btn btn-default">Refrescar</button>
+                  <button type="button" name="filter" id="filter" class="btn btn-primary">Buscar
+                    <i class="far fa-calendar-alt"></i>
+                  </button>
+                  <button type="button" name="refresh" id="refresh" class="btn btn-default">
+                    <i class="fas fa-sync"></i>
+                  </button>
                 </div>
 
               </div>
@@ -322,7 +336,7 @@
                       </div>
         
                       <input type="text" class="form-control" name="titulo"
-                      value="{{ $value->titulo}}" placeholder="Editar Nombre centro" required>
+                      value="{{ $value->titulo}}" placeholder="Editar Nombre centro">
         
                     </div>
         
@@ -333,7 +347,7 @@
                       </div>
         
                       <input type="text" class="form-control" name="observacion"
-                      value="{{ $value->observacion}}" placeholder="Editar Observacion" required>
+                      value="{{ $value->observacion}}" placeholder="Editar Observacion">
         
                     </div>
         
@@ -528,6 +542,14 @@
     <script>
         notie.alert({ type: 1, text: '¡El registro ha sido creada correctamente!', time: 10 })
     </script>
+
+  @endif
+
+  @if (Session::has("ok-email"))
+
+  <script>
+      notie.alert({ type: 1, text: '¡Correo enviado correctamente!', time: 05 })
+  </script>
 
   @endif
 

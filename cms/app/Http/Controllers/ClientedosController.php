@@ -1,10 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
 Use App\Multi;
 Use App\Administradores;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Http\Request;
 
 class ClientedosController extends Controller
 {
@@ -129,7 +130,7 @@ class ClientedosController extends Controller
 			$validar = \Validator::make($datos,[
 
     			"titulo"=> "required|regex:/^[0-9a-zA-ZñÑáéíóúÁÉÍÓÚ ]+$/i",
-    			"observacion"=> "required|regex:/^[0-9a-zA-ZñÑáéíóúÁÉÍÓÚ ]+$/i",
+    		//	"observacion"=> "required|regex:/^[0-9a-zA-ZñÑáéíóúÁÉÍÓÚ ]+$/i",
     		//	"estado"=> "required|regex:/^[a-z0-9-]+$/i",
     			"imagen_temporal"=> "required|image|mimes:jpg,jpeg,png|max:2000000"
 
@@ -216,9 +217,9 @@ class ClientedosController extends Controller
             $validar = \Validator::make($datos,[
 
                 "titulo" => "required|regex:/^[0-9a-zA-ZñÑáéíóúÁÉÍÓÚ ]+$/i",
-                "observacion" => "required|regex:/^[0-9a-zA-ZñÑáéíóúÁÉÍÓÚ ]+$/i",
-                "estado" => 'required|regex:/^[,\\0-9a-zA-ZñÑáéíóúÁÉÍÓÚ ]+$/i',
-                "grabacion" => "required|regex:/^[a-z0-9-]+$/i",
+            //    "observacion" => "required|regex:/^[0-9a-zA-ZñÑáéíóúÁÉÍÓÚ ]+$/i",
+            //    "estado" => 'required|regex:/^[,\\0-9a-zA-ZñÑáéíóúÁÉÍÓÚ ]+$/i',
+            //    "grabacion" => "required|regex:/^[a-z0-9-]+$/i",
 				"imagen_actual"=> "required"
 				
 
